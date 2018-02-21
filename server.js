@@ -22,6 +22,7 @@ console.log('-----------------------');
 console.log('HTTP 路径为: \n' + path);
 
 if(path == '/' ){
+  response.statusCode = 200;;
   response.setHeader('Content-Type', 'text/html; charset=utf-8');
   response.write('<!DOCTYPE>\n' +
   '<html><head>' + 
@@ -34,17 +35,20 @@ if(path == '/' ){
   response.end();
   console.log('html文件已经发送');
 }else if(path == '/style.css'){
+  response.statusCode = 200;
   response.setHeader('Content-Type', 'text/css; charset=utf-8');
   response.write('body{background-color: #ddd;}h1{color: red;}');
   response.end();
   console.log('css文件已经发送');
 }else if(path == '/main.js'){
+  response.statusCode = 200;
   response.setHeader('Content-Type', 'text/javascript; charset=utf-8');
   response.write('alert("这是JS执行的 :) ")');
   response.end();
   console.log('js文件已经发送');
 }else {
   response.statusCode = 404;
+  response.write('出错了，404');
   response.end();
   console.log('客户端有点小错误，404状态 已经发送 :) ');
 }
